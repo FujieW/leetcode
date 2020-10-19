@@ -16,6 +16,7 @@ public class ReplaceSpace {
         for (int i = 0; i < s.length(); i++) {
             if (' ' == s.charAt(i)) {
                 spaceCount++;
+
             }
         }
         str.setLength(s.length() + spaceCount * 2);
