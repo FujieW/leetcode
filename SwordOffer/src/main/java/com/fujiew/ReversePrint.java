@@ -11,6 +11,7 @@ public class ReversePrint {
     }
     public int[] reversePrint(ListNode head) {
         int length = 0;
+
         ListNode pointer = head;
         while (pointer != null) {
             length++;
