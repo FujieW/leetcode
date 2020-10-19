@@ -22,6 +22,7 @@ public class FindNumberInTwoArray {
     public static boolean findNumberIn2DArray(int[][] matrix, int target) {
         if (matrix.length == 0 || matrix[0].length == 0) {
             // 列 或者 行 为 0 的时候直接返回false
+
             return false;
         }
         int row = matrix.length;
