@@ -18,6 +18,7 @@ public class FindRepeatNumber {
     public static int findRepeatNumber(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>(nums.length);
         for (int num : nums) {
+
             if (!map.containsKey(num)) {
                 map.put(num, 1);
             } else {
