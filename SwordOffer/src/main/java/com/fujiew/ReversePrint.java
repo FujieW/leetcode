@@ -1,5 +1,7 @@
 package com.fujiew;
 
+import com.fujiew.common.ListNode;
+
 /**
  * @author fujiew
  * @TODO : TODO

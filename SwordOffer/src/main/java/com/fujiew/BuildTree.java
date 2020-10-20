@@ -1,6 +1,6 @@
 package com.fujiew;
 
-import sun.reflect.generics.tree.Tree;
+import com.fujiew.common.TreeNode;
 
 /**
  * 剑指 Offer 第七题

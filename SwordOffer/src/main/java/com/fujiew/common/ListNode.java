@@ -1,4 +1,4 @@
-package com.fujiew;
+package com.fujiew.common;
 
 /**
  * @author fujiew
@@ -6,11 +6,11 @@ package com.fujiew;
  * @Create on : 2020/10/19 23:40
  **/
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
     }
 }
