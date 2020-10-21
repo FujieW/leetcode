@@ -12,7 +12,7 @@ package com.fujiew;
  **/
 public class MyPow {
     public static void main(String[] args) {
-        System.out.println(myPow(2, -2147483648));
+        System.out.println(myPow2(2, -2147483648));
         System.out.println(Math.pow(2, -2147483648));
     }
 
@@ -39,4 +39,20 @@ public class MyPow {
             return result;
         }
     }
+
+    public static double myPow2(double x, int n) {
+
+        if (n == 0 || x == 1) {
+            return 1;
+        }
+        if (x == -1) {
+            return (n & 1) == 0 ? 1 : -1;
+        }
+        if (n < 0) {
+            // 如果 n 是负的
+            return 1 / x * myPow2(1 / x, -n - 1);
+        }
+        return myPow2(x * x, n >> 1) * ((n & 1) == 0 ? 1 : x);
+    }
+
 }
