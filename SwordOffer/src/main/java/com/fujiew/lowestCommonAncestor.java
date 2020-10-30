@@ -18,7 +18,8 @@ public class lowestCommonAncestor {
     ArrayList<TreeNode> pList = null;
     ArrayList<TreeNode> qList = null;
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    // 二叉搜索树的最近祖先
+    /*public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) {
             return root;
         }
@@ -32,6 +33,20 @@ public class lowestCommonAncestor {
         } else {
             // 两个节点在根节点两侧
             return root;
+        }
+    }*/
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left != null && right != null) {
+            return root;
+        } else if (left == null) {
+            return right;
+        } else {
+            return left;
         }
     }
 
