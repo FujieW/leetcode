@@ -22,6 +22,7 @@ public class FindRepeatNumber {
             if (!map.containsKey(num)) {
                 map.put(num, 1);
             } else {
+
                 return num;
             }
         }
