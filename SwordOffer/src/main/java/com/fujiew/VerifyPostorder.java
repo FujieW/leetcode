@@ -13,9 +13,33 @@ import java.util.concurrent.atomic.AtomicLong;
  **/
 public class VerifyPostorder {
     public static void main(String[] args) {
+        VerifyPostorder verifyPostorder = new VerifyPostorder();
+
+        System.out.println(verifyPostorder.verifyPostorder(new int[]{1, 6, 3, 2, 5}));
+
 
     }
 
+    public boolean verifyPostorder(int[] postorder) {
+        return recur(postorder, 0, postorder.length - 1);
+    }
 
+    boolean recur(int[] postorder, int i, int j) {
+        if (i >= j) {
+            return true;
+        }
+
+        int low = i;
+        int root = postorder[j];
+        while (postorder[low] < root) {
+            low++;
+        }
+
+        int high = low;
+        while (postorder[high] > root) {
+            high++;
+        }
+        return high == j && recur(postorder, i, low - 1) && recur(postorder, low, j - 1);
+    }
 
 }
