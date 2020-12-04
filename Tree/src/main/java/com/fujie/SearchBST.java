@@ -12,6 +12,8 @@ public class SearchBST {
 
     }
 
+    // 700题
+    // 利用二叉搜索树的特性进行遍历
     public TreeNode searchBST(TreeNode root, int val) {
         if (root == null) {
             return null;
