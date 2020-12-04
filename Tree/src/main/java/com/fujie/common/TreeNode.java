@@ -1,5 +1,7 @@
 package com.fujie.common;
 
+import sun.reflect.generics.tree.Tree;
+
 /**
  * @author fujiew
  * @TODO : TODO
@@ -14,5 +16,11 @@ public class TreeNode {
         this.left = null;
         this.right = null;
         val = x;
+    }
+
+    public TreeNode(int x, TreeNode left, TreeNode right) {
+        this.val = x;
+        this.left = left;
+        this.right = right;
     }
 }
