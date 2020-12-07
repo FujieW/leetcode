@@ -15,6 +15,8 @@ public class Codec {
 
     }
 
+    // 前序序列化
+
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
