@@ -10,7 +10,8 @@ import sun.reflect.generics.tree.Tree;
  **/
 public class ConvertBST {
     int sum = 0;
-    public TreeNode  convertBST(TreeNode root) {
+
+    public TreeNode convertBST(TreeNode root) {
         if (root == null) {
             return null;
         }
