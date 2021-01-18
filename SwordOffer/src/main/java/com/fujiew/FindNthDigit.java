@@ -12,6 +12,17 @@ public class FindNthDigit {
     }
 
     public int findNthDigit(int n) {
-        return 0;
+        int digit = 1;
+        int count = 9;
+        int start = 1;
+        while (count < n) {
+            n -= count;
+            digit += 1;
+            start *= 10;
+            count = digit * start * 9;
+        }
+
+        long num = start + (n - 1) / digit;
+        return Long.toString(num).charAt((n - 1) % digit) - '0';
     }
 }
