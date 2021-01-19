@@ -1,17 +1,18 @@
 package com.fujiew;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * 剑指Offer 03， 数组中重复的元素
+ *
  * @author fujiew
  * @TODO : TODO
  * @Create on : 2020/10/19 21:06
- *
  **/
 public class FindRepeatNumber {
     public static void main(String[] args) {
-        System.out.println(findRepeatNumber2(new int[]{2, 3, 1, 0, 4, 5, 3}));
+        System.out.println(findRepeatNumber2(new int[]{2, 3, 1, 0, 2, 5, 3}));
     }
 
     // 遍历数组，将数组加进 hashmap 里面， hashmap 查询的时间复杂度是 O(1)
@@ -29,23 +30,33 @@ public class FindRepeatNumber {
         return 0;
     }
 
-    // 最优解， 将位置0放0， 位置1放1，
+    // 最优解， 数组下标为i的地方放置数字i
     public static int findRepeatNumber2(int[] nums) {
         int i = 0;
+        ArrayList<Integer> list = new ArrayList<>();
         while (i < nums.length) {
             if (nums[i] == i) {
                 i++;
-                continue;
+            } else {
+                int index = nums[i];
+                // 输出从左向右第一个重复的数字
+                if (index == nums[index]) {
+                    return index;
+                }
+                // 输出全部的重复数字
+                /*if (index == nums[index]) {
+                    list.add(index);
+                    i++;
+                    continue;
+                }*/
+                nums[i] = nums[index];
+                nums[index] = index;
             }
-            if (nums[i] == nums[nums[i]]) {
-                // 这里第一次想到的是，当nums[i] < i 是也可以返回，不过是错误的，
-                // 当数据是 1,1,1 的时候会死循环
-                return nums[i];
-            }
-            int temp = nums[nums[i]];
-            nums[nums[i]] = nums[i];
-            nums[i]= temp;
         }
+        System.out.println(list);
+
         return 0;
     }
+
+
 }
