@@ -23,6 +23,7 @@ class DiningPhilosophers {
                            Runnable eat,
                            Runnable putLeftFork,
                            Runnable putRightFork) throws InterruptedException {
+        // 第一种方法
         int fork1 = philosopher;
         int fork2 = (philosopher + 1) % 5;
 
@@ -40,5 +41,16 @@ class DiningPhilosophers {
 
         chops[fork2].unlock();
         chops[fork1].unlock();
+
+        // 暴力方法
+        // help(pickLeftFork, pickRightFork, eat, putLeftFork, putRightFork);
+    }
+
+    private synchronized void help(Runnable pickLeftFork, Runnable pickRightFork, Runnable eat, Runnable putLeftFork, Runnable putRightFork) {
+        pickLeftFork.run();
+        pickRightFork.run();
+        eat.run();
+        putLeftFork.run();
+        putRightFork.run();
     }
 }
