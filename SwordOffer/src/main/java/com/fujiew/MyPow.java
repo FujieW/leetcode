@@ -55,4 +55,20 @@ public class MyPow {
         return myPow2(x * x, n >> 1) * ((n & 1) == 0 ? 1 : x);
     }
 
+    public static double myPow3(double x, int n) {
+        if (n == 0 || x == 1) {
+            return 1;
+        }
+
+        if (x == -1) {
+            return (n & 1) == 0 ? 1 : -1;
+        }
+
+        if (n < 0) {
+            return 1 / x * myPow3(1 / x, -n - 1);
+        }
+
+        return myPow3(x * x, n >> 1) * ((n & 1) == 0 ? 1 : x);
+    }
+
 }
