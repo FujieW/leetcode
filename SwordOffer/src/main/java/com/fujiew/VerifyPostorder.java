@@ -25,20 +25,22 @@ public class VerifyPostorder {
     }
 
     boolean recur(int[] postorder, int i, int j) {
-        if (i >= j) {
+        if (i == j) {
             return true;
         }
 
         int low = i;
         int root = postorder[j];
+        // 前半段
         while (postorder[low] < root) {
             low++;
         }
-
+        // 后半段
         int high = low;
         while (postorder[high] > root) {
             high++;
         }
+
         return high == j && recur(postorder, i, low - 1) && recur(postorder, low, j - 1);
     }
 
