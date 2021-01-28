@@ -7,8 +7,9 @@ package com.fujiew;
  **/
 public class FindNthDigit {
     public static void main(String[] args) {
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println(Character.isDigit('e'));
+        FindNthDigit findNthDigit = new FindNthDigit();
+        int nthDigit = findNthDigit.findNthDigit(0);
+        System.out.println(nthDigit);
     }
 
     public int findNthDigit(int n) {
@@ -22,6 +23,7 @@ public class FindNthDigit {
             count = digit * start * 9;
         }
         long num = start + (n - 1) / digit; // 2.
-        return Long.toString(num).charAt((n - 1) % digit) - '0';
+        int index = (n - 1) % digit;
+        return Long.toString(num).charAt(index) - '0';
     }
 }
