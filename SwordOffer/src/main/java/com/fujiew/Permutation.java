@@ -1,9 +1,6 @@
 package com.fujiew;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author fujiew
@@ -12,12 +9,12 @@ import java.util.List;
  **/
 public class Permutation {
     public static void main(String[] args) {
-
+        System.out.println(Arrays.toString(permutation2("t")));
     }
 
 
     List<String> res = new LinkedList<>();
-    char[] c;
+    static char[] c;
 
     public String[] permutation(String s) {
         c = s.toCharArray();
@@ -40,9 +37,45 @@ public class Permutation {
         }
     }
 
-    void swap(int a, int b) {
+    static void swap(int a, int b) {
         char tmp = c[a];
         c[a] = c[b];
         c[b] = tmp;
+    }
+
+
+    private static Set<String> hashSet = new HashSet<>();
+    public static String[]  permutation2(String s) {
+        LinkedList<String> res = new LinkedList<>();
+        char[] chars = s.toCharArray();
+        permutation(res, chars, 0);
+        return res.toArray(new String[res.size()]);
+    }
+
+    private static void permutation(LinkedList<String> res, char[] chars, int index) {
+        if (index == chars.length - 1) {
+            String s = new String(chars);
+            if (!hashSet.contains(s)) {
+                res.add(s);
+                hashSet.add(s);
+            }
+        } else {
+            for (int i = index; i < chars.length; i++) {
+                // 判断用来减少交换次数
+                if (i != index) {
+                    swap(chars, i, index);
+                }
+                permutation(res, chars, index + 1);
+                if (i != index) {
+                    swap(chars, i, index);
+                }
+            }
+        }
+    }
+
+    private static void swap(char[] chars, int i, int j) {
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
     }
 }
