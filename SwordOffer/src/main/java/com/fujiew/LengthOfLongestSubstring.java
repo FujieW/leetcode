@@ -1,5 +1,7 @@
 package com.fujiew;
 
+import java.util.HashMap;
+
 /**
  * @author fujiew
  * @TODO : TODO
@@ -19,18 +21,15 @@ public class LengthOfLongestSubstring {
         if (s.length() <= 1) {
             return s.length();
         }
-        char[] chars = s.toCharArray();
-        int i = 0;
-        int j = i + 1;
-        int maxLength = 0;
-        while (i < chars.length && j < chars.length) {
-            if (chars[i] != chars[j]) {
-                j++;
-            } else {
-                maxLength = Math.max(maxLength, j - i);
-                i++;
+        int i = -1, max = 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int j = 0; j < s.length(); j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(i, map.get(s.charAt(j)));
             }
+            map.put(s.charAt(j), j);
+            max = Math.max(max, j - i);
         }
-        return maxLength;
+        return max;
     }
 }
