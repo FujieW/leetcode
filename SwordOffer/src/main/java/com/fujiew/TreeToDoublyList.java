@@ -10,37 +10,33 @@ import java.util.ArrayList;
  * @Create on : 2020/11/10 16:44
  **/
 public class TreeToDoublyList {
-    public static void main(String[] args) {
-        Node node = new Node(3);
-        Node node1 = treeToDoublyList(node);
-        System.out.println(node1.val);
+    private Node prev = null;
+    private Node head = null;
 
-    }
-
-    private static Node head;
-    private static Node cur;
-    public static Node treeToDoublyList(Node root) {
+    public Node treeToDoublyList(Node root) {
         if (root == null) {
             return null;
         }
-        inOrd(root);
-        head.left = cur;
-        cur.right = head;
+        inorder(root);
+        head.left = prev;
+        prev.right = head;
         return head;
     }
 
-    public static void inOrd(Node node) {
-        if (node == null) {
+    private void inorder(Node root) {
+        if (root == null) {
             return;
         }
-        inOrd(node.left);
-        if (cur != null) {
-            cur.right = node;
-        } else { // 头节点
-            head = node;
+
+        inorder(root.left);
+        if (prev != null) {
+            prev.right = root;
+        } else {
+            head = root;
         }
-        node.left = cur;
-        cur = node;
-        inOrd(node.right);
+        root.left = prev;
+        prev = root;
+        inorder(root.right);
+
     }
 }
