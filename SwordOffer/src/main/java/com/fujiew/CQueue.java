@@ -13,15 +13,33 @@ import java.util.Stack;
  * @Create on : 2020/10/20 16:56
  **/
 public class CQueue {
-    LinkedList<Integer> stack1;
+
+    private Stack<Integer> stack1;
+    private Stack<Integer> stack2;
+
     public CQueue() {
-        stack1 = new LinkedList<>();
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
     }
 
     public void appendTail(int value) {
         stack1.add(value);
     }
+
     public int deleteHead() {
-        return stack1.isEmpty() ? -1 : stack1.remove();
+        int e;
+        if (!stack2.isEmpty()) {
+            return stack2.pop();
+        } else {
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+            if (stack2.isEmpty()) {
+                e = -1;
+            } else {
+                e = stack2.pop();
+            }
+        }
+        return e;
     }
 }
