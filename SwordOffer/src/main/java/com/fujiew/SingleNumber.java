@@ -1,6 +1,7 @@
 package com.fujiew;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -10,9 +11,50 @@ import java.util.Map;
  **/
 public class SingleNumber {
     public static void main(String[] args) {
-        System.out.println(singleNumber(new int[]{3, 5, 3, 3}));
+        // System.out.println(singleNumber(new int[]{3, 5, 3, 3}));
+        String str = "{{[(ASD)SD{SD}]";
+        System.out.println(isCorrect(str));
     }
 
+    public static boolean isCorrect(String str) {
+        char[] chars = str.toCharArray();
+        LinkedList<Character> stack = new LinkedList();
+        for(int i =0; i<chars.length;i++){
+            if(chars[i] == '[' || chars[i]== '{' || chars[i] == '('){
+                stack.addLast(chars[i]);
+            } else{
+                // 数字，字母
+                if (chars[i] != ']' && chars[i]!= '}' && chars[i] != ')'){
+                    continue;
+                } else{
+                    if (stack.isEmpty()) {
+                        return false;
+                    }
+                    // 是右括号
+                    if (chars[i] == ']'){
+                        if(stack.getLast() == '['){
+                            stack.removeLast();
+                        }else{
+                            return false;
+                        }
+                    } else if(chars[i] == '}'){
+                        if(stack.getLast() == '{'){
+                            stack.removeLast();
+                        }else{
+                            return false;
+                        }
+                    } else{
+                        if(stack.getLast() == '('){
+                            stack.removeLast();
+                        }else{
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
 
     public static int singleNumber(int[] nums) {
         int one = 0;
