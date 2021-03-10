@@ -8,7 +8,21 @@ import java.util.Arrays;
 public class LongestCommonSubsequence {
     public static void main(String[] args) {
         LongestCommonSubsequence lsc = new LongestCommonSubsequence();
-        System.out.println(lsc.longestCommonSubsequence("ace", "babcde"));
+        String text1 = "abc";
+        String text2 = "def";
+        System.out.println(lsc.longestCommonSubsequence2(text1, text2, text1.length() - 1, text2.length() - 1));
+    }
+
+    public int longestCommonSubsequence2(String text1, String text2, int n, int m) {
+        if (m == -1 || n == -1) {
+            return 0;
+        }
+        if (text1.charAt(n) == text2.charAt(m)) {
+            return longestCommonSubsequence2(text1, text2, n - 1, m - 1) + 1;
+        } else {
+            return Math.max(longestCommonSubsequence2(text1, text2, n - 1, m),
+                    longestCommonSubsequence2(text1, text2, n, m - 1));
+        }
     }
 
     public int longestCommonSubsequence(String text1, String text2) {
