@@ -2,6 +2,7 @@ import common.ListNode;
 import common.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * @author fujiew
@@ -10,7 +11,13 @@ import java.util.ArrayList;
  **/
 public class Test {
     public static void main(String[] args) {
-
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String c = sc.nextLine(); // 接收回车
+        for (int i = 0; i < n; i++) {
+            String num = sc.nextLine();
+            System.out.println(num);
+        }
 
     }
 
