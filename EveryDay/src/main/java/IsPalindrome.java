@@ -1,5 +1,7 @@
 import common.ListNode;
 
+import java.util.Scanner;
+
 /**
  * @author fujiew
  * @TODO : TODO
@@ -7,7 +9,35 @@ import common.ListNode;
  **/
 public class IsPalindrome {
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            String line = in.nextLine();
+            String[] nums = line.split(" ");
+        }
+    }
 
+    public boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int reverse = reverse(x);
+        return reverse == x;
+    }
+
+    public int reverse(int x) {
+        int res = 0;
+        while (x != 0) {
+            int num = x % 10;
+            x /= 10;
+            if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && num > 7)) {
+                return 0;
+            }
+            if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && num < -8)) {
+                return 0;
+            }
+            res = res * 10 + num;
+        }
+        return res;
     }
 
     public boolean isPalindrome(ListNode head) {
