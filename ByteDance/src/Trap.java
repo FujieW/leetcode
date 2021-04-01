@@ -1,5 +1,3 @@
-package common;
-
 /**
  * @author fujiew
  * @TODO : TODO
