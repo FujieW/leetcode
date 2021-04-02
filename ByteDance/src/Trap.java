@@ -12,7 +12,6 @@ public class Trap {
         if (height == null || height.length == 0) {
             return 0;
         }
-
         int n = height.length;
         int ans = 0;
         int left = 0;
