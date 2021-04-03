@@ -20,29 +20,35 @@ public class LevelOrder {
         if (root == null) {
             return new ArrayList<>();
         }
+        LinkedList<Integer> res = new LinkedList<>();
         LinkedList<TreeNode> queue = new LinkedList<>();
-        LinkedList<Integer> list = new LinkedList<>();
         queue.add(root);
         queue.add(null);
+        int level = 1;
         while (!queue.isEmpty()) {
             TreeNode firstNode = queue.removeFirst();
             if (firstNode == null) {
                 // 一层结束
-                ans.add(list);
+                ans.add(res);
                 if (queue.isEmpty()) {
-                    // 最后一层
                     break;
                 }
-                list = new LinkedList<>();
                 queue.add(null);
+                res = new LinkedList<>();
+                level++;
                 continue;
             }
-            list.addLast(firstNode.val);
+            if ((level & 1) != 0) {
+                res.addLast(firstNode.val);
+            } else {
+                res.addFirst(firstNode.val);
+            }
+
             if (firstNode.left != null) {
-                queue.add(firstNode.left);
+                queue.addLast(firstNode.left);
             }
             if (firstNode.right != null) {
-                queue.add(firstNode.right);
+                queue.addLast(firstNode.right);
             }
         }
         return ans;
